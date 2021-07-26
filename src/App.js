@@ -1,7 +1,16 @@
 import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
 
+
+
 function App() {
+
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all').then((res) => {
+      console.log(res.json());
+    })
+  })
   return (
     <div className="App">
       <header className="App-header">
