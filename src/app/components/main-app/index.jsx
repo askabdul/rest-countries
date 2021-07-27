@@ -13,23 +13,23 @@ export const MainApp = () => {
   const [sort, setSort] = useState([])
 
   useEffect(() => {
-      let continents = {}
+    //   let continents = {}
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
         setRegions(res.data);
-        res.data.map((each,index) => continents[each.region] = index)
-        const parsed = Object.keys(continents).filter(i => i != '');
-        setOptions(parsed)
-        console.log(options);
-        //      let arr = []
-        // for(let i = 0; i <= regions.length; i++) {
-        //     arr.push(regions[i].region)
-        //     const conv = [new Set(arr)]
-        //     console.log([new Set(arr)]);
-        //     const obj = Object.assign({}, conv)
-        //     // setTransformed([...new Set(arr)])
-        //     console.log(obj);
-        //     setTransformed(obj)
-        // }
+        // res.data.map((each,index) => continents[each.region] = index)
+        // const parsed = Object.keys(continents).filter(i => i != '');
+             let arr = []
+        for(let i = 0; i <= regions.length; i++) {
+            arr.push(regions[i].region)
+            const conv = [new Set(arr)]
+            console.log([new Set(arr)]);
+            const obj = Object.assign({}, conv)
+            // setTransformed([...new Set(arr)])
+            console.log('object',Object.entries(obj));
+            // setTransformed(obj)
+            const n = regions.filter(a => a.region === obj.i)
+            console.log('truyruy----',n);
+        }
     }
     ).catch(err => console.log(err))
   }, []);
@@ -38,6 +38,15 @@ export const MainApp = () => {
       const sorted = regions.filter(a => a.region == name);
       setSort(sorted)
   }
+
+//   const groupContinent = (arr) => {
+//       const obj = {};
+//       for(let i=0; i <= options.length; i++) {
+//           options.filter(a => {
+//               a.region === 
+//           })
+//       }
+//   }
 
   return (
     <div className="main-app">

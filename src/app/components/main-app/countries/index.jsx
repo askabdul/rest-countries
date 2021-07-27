@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Loading } from "element-react";
 import { Link } from "react-router-dom";
-import Flag from "./../../../../assets/flag_us.png";
 import axios from "axios";
 import "./style.scss";
 
@@ -23,47 +23,32 @@ export const Countries = (props) => {
     setNations(sorted);
     // console.log(sorted);
   }, [sorted]);
-
-  if (nations.length === 0) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          color: "tomato",
-        }}
-      >
-        Check your connectivity
-      </div>
-    );
-  } else {
-    return (
+        <Loading text="Loading..." loading={!nations}>
       <div className="countries">
         {nations.map((nation) => {
           return (
-              <Link to={`/countries/${nation.capital}`}>
-            <div className="country" key={nation.id}>
-              <img src={nation.flag} alt="" key={nation.id} />
+            <Link to={`/countries/${nation.capital}`}>
+              <div className="country" key={nation.id}>
+                <img src={nation.flag} alt="" key={nation.id} />
 
-              <div className="content" key={nation.id}>
-                <h2 title={nation.name}>{nation.name}</h2>
-                <p>
-                  <span>Population</span>: {nation.population}
-                </p>
-                <p>
-                  <span>Region</span>: {nation.region}
-                </p>
-                <p>
-                  <span>Capital</span>: {nation.capital}
-                </p>
+                <div className="content" key={nation.id}>
+                  <h2 title={nation.name}>{nation.name}</h2>
+                  <p>
+                    <span>Population</span>: {nation.population}
+                  </p>
+                  <p>
+                    <span>Region</span>: {nation.region}
+                  </p>
+                  <p>
+                    <span>Capital</span>: {nation.capital}
+                  </p>
+                </div>
               </div>
-            </div>
             </Link>
           );
         })}
       </div>
+      </Loading>
     );
-  }
 };

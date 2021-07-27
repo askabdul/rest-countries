@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Loading } from "element-react";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import "./style.scss";
 
-export const CountryDetails = () => {
+export const CountryDetails = (props) => {
   const [display, setDisplay] = useState([]);
   const { id } = useParams();
+  const history = useHistory()
 
   useEffect(() => {
     axios
       .get(`https://restcountries.eu/rest/v2/capital/${id}`)
       .then((res) => {
         setDisplay(res.data);
-        console.log("details", res.data);
+        // console.log("details", res.data);
       })
       .catch((err) => console.log(err));
     console.log(id);
@@ -22,21 +24,22 @@ export const CountryDetails = () => {
     <div className="country-details">
       {/* {console.log('id', id)} */}
 
-      <button>
-        <i class="fas fa-long-arrow-alt-left"></i>Back
+      <button className='btn' onClick= {() => history.goBack()}>
+        <i className="fas fa-long-arrow-alt-left"></i>Back
       </button>
       {display.map((one) => {
         return (
-          <div className="one-country">
-            <img src={one.flag} alt="" />
+            <Loading text="Loading..." loading={!display}>          
+                <div className="one-country" key={one.area}>
+            <img src={one.flag} alt="national flag" />
 
-            <div className="meta">
+            <div className="meta" key={one.area}>
               <h2>{one.name}</h2>
               <p>
                 <span>Native Name</span>: {one.nativeName}
               </p>
               <p>
-                <span>Population</span>: {one.population}
+                <span>Population</span>: {one.population.toLocaleString()}
               </p>
               <p>
                 <span>Region</span>: {one.region}
@@ -64,22 +67,20 @@ export const CountryDetails = () => {
                 })}
               </p>
             </div>
-
-            <div className="border">
-              <h3>
+            <h4>
                 <span>Border Countries:</span>
-              </h3>
+              </h4>
+            <div className="border">
+              
               {one.borders.map(each => {
-                  return <div className="border-countries">
-
-                  <button>{each}</button>
-                  
-                </div>
+                  return  <button>{each}</button>
               })}
 
               
             </div>
           </div>
+          </Loading>
+
         );
       })}
     </div>
