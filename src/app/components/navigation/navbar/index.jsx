@@ -1,5 +1,5 @@
 import React from 'react';
-// import './style.scss';
+import './style.scss';
 
 export const Navbar = () => {
     return (
@@ -8,6 +8,7 @@ export const Navbar = () => {
                 Where in the world?
             </div>
             <div className="mode">
+            <i className="far fa-moon"></i>
                 Dark Mode
             </div>
         </div>
