@@ -10,7 +10,8 @@ export const MainApp = () => {
 
   const [regions, setRegions] = useState([]);
   const [transformed, setTransformed] = useState([]);
-  const [sort, setSort] = useState([])
+  const [sort, setSort] = useState([]);
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     //   let continents = {}
@@ -59,6 +60,7 @@ export const MainApp = () => {
           placeholder="Search for a country..."
           name="q"
           aria-label="Search through site content"
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
         <Select value={regions} placeholder='Filter by Region' onChange={selectFrom}>
@@ -68,7 +70,7 @@ export const MainApp = () => {
             );
           })}
         </Select>
-      <Countries sorted={sort}/>
+      <Countries sorted={sort} search={search}/>
     </div>
   );
 };

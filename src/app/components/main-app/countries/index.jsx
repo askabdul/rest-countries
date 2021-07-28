@@ -5,7 +5,7 @@ import axios from "axios";
 import "./style.scss";
 
 export const Countries = (props) => {
-  const { sorted } = props;
+  const { sorted, search } = props;
 
   const [nations, setNations] = useState([]);
 
@@ -23,32 +23,42 @@ export const Countries = (props) => {
     setNations(sorted);
     // console.log(sorted);
   }, [sorted]);
-    return (
-        <Loading text="Loading..." loading={!nations}>
+  return (
+    <Loading text="Loading..." loading={!nations}>
       <div className="countries">
-        {nations.map((nation) => {
-          return (
-            <Link to={`/countries/${nation.capital}`}>
-              <div className="country" key={nation.id}>
-                <img src={nation.flag} alt="" key={nation.id} />
+        {nations
+          .filter((country) => {
+            if (!search) {
+              return country;
+            } else if (
+              country.name.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return country;
+            }
+          })
+          .map((nation) => {
+            return (
+              <Link to={`/countries/${nation.capital}`}>
+                <div className="country" key={nation.id}>
+                  <img src={nation.flag} alt="" key={nation.id} />
 
-                <div className="content" key={nation.id}>
-                  <h2 title={nation.name}>{nation.name}</h2>
-                  <p>
-                    <span>Population</span>: {nation.population}
-                  </p>
-                  <p>
-                    <span>Region</span>: {nation.region}
-                  </p>
-                  <p>
-                    <span>Capital</span>: {nation.capital}
-                  </p>
+                  <div className="content" key={nation.id}>
+                    <h2 title={nation.name}>{nation.name}</h2>
+                    <p>
+                      <span>Population</span>: {nation.population}
+                    </p>
+                    <p>
+                      <span>Region</span>: {nation.region}
+                    </p>
+                    <p>
+                      <span>Capital</span>: {nation.capital}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
       </div>
-      </Loading>
-    );
+    </Loading>
+  );
 };
