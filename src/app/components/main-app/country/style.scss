@@ -16,6 +16,7 @@
     color: #837f7f;
     border: 1px solid #cecaca;
     background-color: #fff;
+    cursor: pointer;
     .fa-long-arrow-alt-left {
       margin-right: 0.7em;
     }
@@ -26,6 +27,8 @@
     justify-content: center;
     img {
       width: 20em;
+      margin-left: auto;
+      margin-right: auto;
     }
     .meta {
       margin-top: 2em;
@@ -36,27 +39,29 @@
       }
     }
     .extra {
-      // margin-right: auto;
-      // margin-left: 1em;
       p {
         span {
           font-weight: 600;
         }
       }
     }
+    h4 {
+      margin-left: 0em;
+    }
     .border {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-    //   justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
       button {
         box-shadow: 1px -1px 5px 1px #e8e8e8;
-        margin-right: 0.5em;
         padding: 0.4em 0.8em;
-        margin-bottom: 1em;
         border: 1px solid #dedede;
-        border-radius: .3em;
+        border-radius: 0.3em;
         background-color: #fff;
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
       }
     }
   }

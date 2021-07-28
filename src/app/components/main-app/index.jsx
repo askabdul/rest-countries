@@ -35,7 +35,7 @@ export const MainApp = () => {
   }, []);
 
   const selectFrom = (name) => {
-      const sorted = regions.filter(a => a.region == name);
+      const sorted = regions.filter(a => a.region === name);
       setSort(sorted)
   }
 

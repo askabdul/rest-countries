@@ -6,7 +6,7 @@ import "./style.scss";
 
 export const CountryDetails = (props) => {
   const [display, setDisplay] = useState([]);
-const [countryDet, setCountryDet] = useState([]);
+  const [countryDet, setCountryDet] = useState([]);
   const { id } = useParams();
   const history = useHistory();
 
@@ -25,17 +25,17 @@ const [countryDet, setCountryDet] = useState([]);
     axios
       .get(`https://restcountries.eu/rest/v2/all`)
       .then((res) => {
-          setCountryDet(res.data)
+        setCountryDet(res.data);
       })
       .catch((err) => console.log(err));
     //   getCountryDetails('MNE')
   }, []);
 
   const getCountryDetails = (details) => {
-    const borders = countryDet.filter(a => a.alpha3Code === details)
-    const p = borders.map(a => a.capital)
-    return p
-  }
+    const borders = countryDet.filter((a) => a.alpha3Code === details);
+    const p = borders.map((a) => a.capital);
+    return p;
+  };
 
   return (
     <div className="country-details">
@@ -92,9 +92,11 @@ const [countryDet, setCountryDet] = useState([]);
               <div className="border">
                 {one.borders.map((each) => {
                   return (
-                        
-                      <button><a href={`/countries/${getCountryDetails(each)}`}>{each}</a></button>
-                    
+                    <button>
+                      <a href={`/countries/${getCountryDetails(each)}`}>
+                        {each}
+                      </a>
+                    </button>
                   );
                 })}
               </div>

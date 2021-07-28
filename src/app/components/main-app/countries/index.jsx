@@ -14,7 +14,7 @@ export const Countries = (props) => {
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
         setNations(res.data);
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
