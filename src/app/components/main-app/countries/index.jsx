@@ -14,7 +14,7 @@ export const Countries = (props) => {
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
         setNations(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -25,7 +25,7 @@ export const Countries = (props) => {
   }, [sorted]);
   return (
     <Loading text="Loading..." loading={!nations}>
-      <div className="countries">
+      <div className="countries" >
         {nations
           .filter((country) => {
             if (!search) {
@@ -39,13 +39,14 @@ export const Countries = (props) => {
           .map((nation) => {
             return (
               <Link to={`/countries/${nation.capital}`}>
-                <div className="country" key={nation.id}>
+                <div className="country" key={nation.id} id="countries">
                   <img src={nation.flag} alt="" key={nation.id} />
 
-                  <div className="content" key={nation.id}>
+                  <div className="content" key={nation.id} id="content">
                     <h2 title={nation.name}>{nation.name}</h2>
                     <p>
-                      <span>Population</span>: {nation.population}
+                      <span>Population</span>:{" "}
+                      {nation.population.toLocaleString()}
                     </p>
                     <p>
                       <span>Region</span>: {nation.region}

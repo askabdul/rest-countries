@@ -26,10 +26,10 @@ export const MainApp = () => {
             console.log([new Set(arr)]);
             const obj = Object.assign({}, conv)
             // setTransformed([...new Set(arr)])
-            console.log('object',Object.entries(obj));
+            // console.log('object',Object.entries(obj));
             // setTransformed(obj)
             const n = regions.filter(a => a.region === obj.i)
-            console.log('truyruy----',n);
+            // console.log('truyruy----',n);
         }
     }
     ).catch(err => console.log(err))
@@ -56,6 +56,7 @@ export const MainApp = () => {
         <i className="fas fa-search"></i>
         <input
           type="search"
+          className='input'
           id="site-search"
           placeholder="Search for a country..."
           name="q"
@@ -63,7 +64,7 @@ export const MainApp = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-        <Select value={regions} placeholder='Filter by Region' onChange={selectFrom}>
+        <Select value={regions} placeholder='Filter by Region' onChange={selectFrom} clearable={true}>
           {regions.map((el) => {
             return (
               <Select.Option key={el.id} label={el.region} value={el.region} />

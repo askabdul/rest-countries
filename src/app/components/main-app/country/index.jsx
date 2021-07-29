@@ -18,7 +18,7 @@ export const CountryDetails = (props) => {
         // console.log("details", res.data);
       })
       .catch((err) => console.log(err));
-    console.log(id);
+    // console.log(id);
   }, []);
 
   useEffect(() => {
@@ -32,9 +32,9 @@ export const CountryDetails = (props) => {
   }, []);
 
   const getCountryDetails = (details) => {
-    const borders = countryDet.filter((a) => a.alpha3Code === details);
-    const p = borders.map((a) => a.capital);
-    return p;
+    const borders = countryDet.filter((detail) => detail.alpha3Code === details);
+    const capital = borders.map((a) => a.capital);
+    return capital;
   };
 
   return (

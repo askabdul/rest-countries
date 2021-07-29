@@ -12,8 +12,13 @@
   .mode {
     font-size: 0.8em;
     font-weight: 500;
+    cursor: pointer;
     .fa-moon {
       margin-right: 0.5em;
     }
   }
 }
+
+.nav {
+    box-shadow: -3px 0px 13px 4px #1b252c;
+  }
