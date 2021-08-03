@@ -18,6 +18,7 @@ export const CountryDetails = (props) => {
         // console.log("details", res.data);
       })
       .catch((err) => console.log(err));
+      console.log(props);
     // console.log(id);
   }, []);
 
@@ -44,9 +45,9 @@ export const CountryDetails = (props) => {
       <button className="btn" onClick={() => history.goBack()}>
         <i className="fas fa-long-arrow-alt-left"></i>Back
       </button>
+      <Loading text="Loading..." loading={!display.length}>
       {display.map((one) => {
         return (
-          <Loading text="Loading..." loading={!display}>
             <div className="one-country" key={one.area}>
               <img src={one.flag} alt="national flag" />
 
@@ -101,9 +102,10 @@ export const CountryDetails = (props) => {
                 })}
               </div>
             </div>
-          </Loading>
+         
         );
       })}
+       </Loading>
     </div>
   );
 };

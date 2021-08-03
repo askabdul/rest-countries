@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import EventEmitter from "reactjs-eventemitter";
 import { Loading } from "element-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -9,23 +10,27 @@ export const Countries = (props) => {
 
   const [nations, setNations] = useState([]);
 
+
   useEffect(() => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
         setNations(res.data);
         // console.log(res.data);
+        console.log(nations);
       })
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     setNations(sorted);
+    EventEmitter.subscribe('regions', payload => setNations(payload))
+
     // console.log(sorted);
   }, [sorted]);
   return (
-    <Loading text="Loading..." loading={!nations}>
-      <div className="countries" >
+    <Loading text="Loading..." loading={!nations.length}>
+      <div className="countries">
         {nations
           .filter((country) => {
             if (!search) {

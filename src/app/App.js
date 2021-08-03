@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { MainApp } from "./../app/components/main-app";
 import { CountryDetails } from "./components/main-app/country";
 import { Navbar } from "./components/navigation/navbar";
 import "element-theme-default";
 
-export const App = () => {
+export const App = (props) => {
+
+  useEffect(() => {
+    console.log(props);
+  })
   return (
     <Router>
       <Navbar />

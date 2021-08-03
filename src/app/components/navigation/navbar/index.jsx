@@ -16,9 +16,18 @@ export const Navbar = () => {
     const content = document.querySelectorAll(".content");
     toggleDark.classList.toggle("dark");
     navbar.classList.toggle("nav");
-    search.classList.toggle("input_search");
-    filter.classList.toggle("inner");
-    dropdown.classList.toggle("dropdown");
+    if (search) {
+      search.classList.toggle("input_search");
+    }
+
+    if (filter) {
+      filter.classList.toggle("inner");
+    }
+
+    if (dropdown) {
+      dropdown.classList.toggle("dropdown");
+    }
+
     content.forEach((con) => {
       con.classList.toggle("color_toggle");
     });
