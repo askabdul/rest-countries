@@ -18,7 +18,7 @@ export const CountryDetails = (props) => {
         // console.log("details", res.data);
       })
       .catch((err) => console.log(err));
-      console.log(props);
+    console.log(props);
     // console.log(id);
   }, []);
 
@@ -33,7 +33,9 @@ export const CountryDetails = (props) => {
   }, []);
 
   const getCountryDetails = (details) => {
-    const borders = countryDet.filter((detail) => detail.alpha3Code === details);
+    const borders = countryDet.filter(
+      (detail) => detail.alpha3Code === details
+    );
     const capital = borders.map((a) => a.capital);
     return capital;
   };
@@ -46,8 +48,8 @@ export const CountryDetails = (props) => {
         <i className="fas fa-long-arrow-alt-left"></i>Back
       </button>
       <Loading text="Loading..." loading={!display.length}>
-      {display.map((one) => {
-        return (
+        {display.map((one) => {
+          return (
             <div className="one-country" key={one.area}>
               <img src={one.flag} alt="national flag" />
 
@@ -102,10 +104,9 @@ export const CountryDetails = (props) => {
                 })}
               </div>
             </div>
-         
-        );
-      })}
-       </Loading>
+          );
+        })}
+      </Loading>
     </div>
   );
 };

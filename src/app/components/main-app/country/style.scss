@@ -32,6 +32,12 @@
     }
     .meta {
       margin-top: 2em;
+      h2 {
+        width: 320px;
+        white-space: wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       p {
         span {
           font-weight: 600;

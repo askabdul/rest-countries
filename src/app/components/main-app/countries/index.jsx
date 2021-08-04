@@ -17,7 +17,6 @@ export const Countries = (props) => {
       .then((res) => {
         setNations(res.data);
         // console.log(res.data);
-        console.log(nations);
       })
       .catch((err) => console.log(err));
   }, []);
