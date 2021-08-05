@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./style.scss";
 
 export const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {});
 

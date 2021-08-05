@@ -6,10 +6,8 @@ import axios from "axios";
 import "./style.scss";
 
 export const MainApp = () => {
-  const [options, setOptions] = useState([]);
 
   const [regions, setRegions] = useState([]);
-  const [transformed, setTransformed] = useState([]);
   const [sort, setSort] = useState([]);
   const [search, setSearch] = useState("");
 
