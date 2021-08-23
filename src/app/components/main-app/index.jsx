@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import EventEmitter from "reactjs-eventemitter";
 import { Select } from "element-react";
 import { Countries } from "./countries";
+import { Navbar } from "../navigation/navbar";
 import axios from "axios";
 import "./style.scss";
 
@@ -32,7 +33,7 @@ export const MainApp = () => {
 
   return (
     <div className="main-app">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="search">
         <i className="fas fa-search"></i>
         <input

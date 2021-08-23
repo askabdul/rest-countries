@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Loading } from "element-react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useHistory, useParams, } from "react-router-dom";
 import axios from "axios";
 import "./style.scss";
 
@@ -18,9 +18,9 @@ export const CountryDetails = (props) => {
         // console.log("details", res.data);
       })
       .catch((err) => console.log(err));
-    console.log(props);
+    // console.log(props);
     // console.log(id);
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     axios
